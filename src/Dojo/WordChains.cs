@@ -104,7 +104,16 @@ namespace Dojo
 
         internal bool IsValidMutation(string word1, string word2)
         {
-            return true;
+            int mutationCount = 0;
+            for  (int i = 0 ; i < word1.Length;i++)
+            {
+                if (!word1[i].Equals(word2[i]))
+                {
+                    mutationCount++;
+                }
+            }
+            return mutationCount == 1;
+
         }
     }
 }
