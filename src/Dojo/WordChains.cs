@@ -116,6 +116,11 @@ namespace Dojo
 
         internal bool IsValidMutation(string word1, string word2)
         {
+            if (word1.Length != word2.Length)
+            {
+                return false;
+            }
+
             int mutationCount = 0;
             for  (int i = 0 ; i < word1.Length;i++)
             {
