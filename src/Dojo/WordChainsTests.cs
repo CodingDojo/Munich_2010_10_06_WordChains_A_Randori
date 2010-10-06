@@ -74,6 +74,21 @@ namespace Dojo
         }
 
         [Test]
+        public void GetWordMutations_DictionaryWithNoPath_ReturnsEmptyList()
+        {
+            var startWord = "AA";
+            var endWord = "BB";
+
+            var dictionary = new List<string> { "AA", "BB" };
+            var wordChains = new WordChains(dictionary);
+
+            List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
+
+            Assert.AreEqual(0, mutation.Count);
+           
+        }
+
+        [Test]
         public void GetAllMutations()
         {
             var dictionary = new List<string> { "AA", "BA", "BB" };
