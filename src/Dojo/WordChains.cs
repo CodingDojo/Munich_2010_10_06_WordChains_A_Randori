@@ -28,32 +28,32 @@ namespace Dojo
             var startWord = "AA";
             var endWord = "AB";
 
-            var dictionary = new List<string> { "AB", "BB" };
+            var dictionary = new List<string> { "AA","AB", "BB" };
             var wordChains = new WordChains(dictionary);
 
             List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
 
-            Assert.AreEqual("AB", mutation[0]);            
-            Assert.AreEqual(1, mutation.Count);            
+            Assert.AreEqual("AA", mutation[0]);            
+            Assert.AreEqual("AB", mutation[1]);            
+            Assert.AreEqual(2, mutation.Count);            
         }
 
-        //[Test]
-        //public void GetWordMutations_DictionaryWithTwoMutation_ReturnsMutation()
-        //{
-        //    var startWord = "AA";
-        //    var endWord = "BB";
+        [Test]
+        public void GetWordMutations_DictionaryWithTwoMutation_ReturnsMutation()
+        {
+            var startWord = "AA";
+            var endWord = "BB";
 
-        //    var dictionary = new List<string> { "AB", "BB" };
-        //    var wordChains = new WordChains(dictionary);
+            var dictionary = new List<string> { "AA", "AB", "BB" };
+            var wordChains = new WordChains(dictionary);
 
-        //    List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
 
-        //    Assert.AreEqual("AA", mutation[0]);              
-        //    Assert.AreEqual("AB", mutation[1]);              
-        //    Assert.AreEqual("BB", mutation[2]);              
-        //    Assert.AreEqual(3, mutation.Count);              
-        //}
-
+            Assert.AreEqual("AA", mutation[0]);
+            Assert.AreEqual("AB", mutation[1]);
+            Assert.AreEqual("BB", mutation[2]);
+            Assert.AreEqual(3, mutation.Count);
+        }
 
         [Test]
         public void IsValidMutation_ComparesTwoMutableWordOfSameLength_ReturnsTrue()
