@@ -90,7 +90,7 @@ namespace Dojo
 
         internal bool IsValidMutation(string word1, string word2)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
