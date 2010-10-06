@@ -24,9 +24,17 @@ namespace Dojo
             }
             else
             {
-                mutations.Add(this.FindAllMutations(startWord).First());
-                mutations.Add(endWord);
-                return mutations;
+                var allStartMutations = this.FindAllMutations(startWord);
+                if (allStartMutations.Any())
+                {
+                    mutations.Add(allStartMutations.First());
+                    mutations.Add(endWord);
+                    return mutations;
+                }
+                else
+                {
+                    return new List<string>();
+                }
             }
         }
 
