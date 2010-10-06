@@ -9,7 +9,7 @@ namespace Dojo
     public class WordChainsTests
     {
         [Test]
-        public void GetWordMutation_DictionaryWithOnePossibleMutation_ReturnsMutation()
+        public void GetWordMutations_DictionaryWithOnePossibleMutation_ReturnsMutation()
         {
             var startWord = "A";
             var endWord = "B";
@@ -17,13 +17,13 @@ namespace Dojo
             var dictionary = new List<string> { "B" };
             var wordChains = new WordChains(dictionary);
 
-            List<string> mutation = wordChains.GetWordMutation(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
 
             Assert.AreEqual( "B", mutation[0]);
         }
 
         [Test]
-        public void GetWordMutation_DictionaryWithEndWordAndImpossibleMutation_ReturnsCorrectMutation()
+        public void GetWordMutations_DictionaryWithEndWordAndImpossibleMutation_ReturnsCorrectMutation()
         {
             var startWord = "AA";
             var endWord = "AB";
@@ -31,13 +31,14 @@ namespace Dojo
             var dictionary = new List<string> { "AB", "BB" };
             var wordChains = new WordChains(dictionary);
 
-            List<string> mutation = wordChains.GetWordMutation(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
 
             Assert.AreEqual("AB", mutation[0]);            
+            Assert.AreEqual(0, mutation.Count);            
         }
 
         [Test]
-        public void GetWordMutation_DictionaryWithTwoMutation_ReturnsMutation()
+        public void GetWordMutations_DictionaryWithTwoMutation_ReturnsMutation()
         {
             var startWord = "AA";
             var endWord = "BB";
@@ -45,7 +46,7 @@ namespace Dojo
             var dictionary = new List<string> { "AB", "BB" };
             var wordChains = new WordChains(dictionary);
 
-            List<string> mutation = wordChains.GetWordMutation(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
 
             Assert.AreEqual("AB", mutation[0]);              
             Assert.AreEqual("BB", mutation[1]);              
@@ -61,7 +62,7 @@ namespace Dojo
             this.dictionary = dictionary;
         }
 
-        public List<string> GetWordMutation(string startWord, string endWord)
+        public List<string> GetWordMutations(string startWord, string endWord)
         {
             if (startWord.Length == 1)
             {
