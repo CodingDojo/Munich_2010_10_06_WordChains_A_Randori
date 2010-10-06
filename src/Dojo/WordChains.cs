@@ -23,7 +23,7 @@ namespace Dojo
         }
 
         [Test]
-        public void GetWordMutation_DictionaryWithOnePossibleAndOneImpossibleMutation_ReturnsCorrectMutation()
+        public void GetWordMutation_DictionaryWithEndWordAndImpossibleMutation_ReturnsCorrectMutation()
         {
             var startWord = "AA";
             var endWord = "AB";
@@ -34,6 +34,21 @@ namespace Dojo
             List<string> mutation = wordChains.GetWordMutation(startWord, endWord);
 
             Assert.AreEqual("AB", mutation[0]);            
+        }
+
+        [Test]
+        public void GetWordMutation_DictionaryWithTwoMutation_ReturnsMutation()
+        {
+            var startWord = "AA";
+            var endWord = "BB";
+
+            var dictionary = new List<string> { "AB", "BB" };
+            var wordChains = new WordChains(dictionary);
+
+            List<string> mutation = wordChains.GetWordMutation(startWord, endWord);
+
+            Assert.AreEqual("AB", mutation[0]);              
+            Assert.AreEqual("BB", mutation[1]);              
         }
     }
 
