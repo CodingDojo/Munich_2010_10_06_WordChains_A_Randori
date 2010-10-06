@@ -17,7 +17,7 @@ namespace Dojo
             var dictionary = new List<string> { "B" };
             var wordChains = new WordChains(dictionary);
 
-            List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
 
             Assert.AreEqual( "B", mutation[0]);
         }
@@ -31,7 +31,7 @@ namespace Dojo
             var dictionary = new List<string> { "AB", "BB" };
             var wordChains = new WordChains(dictionary);
 
-            List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
 
             Assert.AreEqual("AB", mutation[0]);            
             Assert.AreEqual(1, mutation.Count);            
@@ -46,10 +46,27 @@ namespace Dojo
             var dictionary = new List<string> { "AB", "BB" };
             var wordChains = new WordChains(dictionary);
 
-            List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
+            List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
 
-            Assert.AreEqual("AB", mutation[0]);              
-            Assert.AreEqual("BB", mutation[1]);              
+            Assert.AreEqual("AA", mutation[0]);              
+            Assert.AreEqual("AB", mutation[1]);              
+            Assert.AreEqual("BB", mutation[2]);              
+            Assert.AreEqual(3, mutation.Count);              
+        }
+
+
+        [Test]
+        public void IsValidMutation_ComparesTwoWords_ReturnsIsValidMutation()
+        {
+            var word1 = "AA";
+            var word2 = "AB";
+
+            var wordChains = new WordChains(null);
+
+            bool isValidMutation = wordChains.IsValidMutation(word1, word2);
+
+            Assert.IsTrue(isValidMutation);
+            
         }
     }
 
@@ -62,13 +79,18 @@ namespace Dojo
             this.dictionary = dictionary;
         }
 
-        public List<string> GetWordMutations(string startWord, string endWord)
+        public List<string> GetWordMutationPath(string startWord, string endWord)
         {
             if (startWord.Length == 1)
             {
                 return new List<string>() { "B" };
             }
             return new List<string>() { "AB" };
+        }
+
+        internal bool IsValidMutation(string word1, string word2)
+        {
+            throw new NotImplementedException();
         }
     }
 }
