@@ -56,7 +56,7 @@ namespace Dojo
 
 
         [Test]
-        public void IsValidMutation_ComparesTwoWords_ReturnsIsValidMutation()
+        public void IsValidMutation_ComparesTwoWords_ReturnsValidMutation()
         {
             var word1 = "AA";
             var word2 = "AB";
@@ -67,6 +67,20 @@ namespace Dojo
 
             Assert.IsTrue(isValidMutation);
             
+        }
+
+        [Test]
+        public void IsValidMutation_ComparesTwoWords_ReturnsInvalidMutation()
+        {
+            var word1 = "AA";
+            var word2 = "BB";
+
+            var wordChains = new WordChains(null);
+
+            bool isValidMutation = wordChains.IsValidMutation(word1, word2);
+
+            Assert.IsFalse(isValidMutation);
+
         }
     }
 
