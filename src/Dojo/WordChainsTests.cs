@@ -74,6 +74,19 @@ namespace Dojo
         }
 
         [Test]
+        public void GetAllMutations()
+        {
+            var dictionary = new List<string> { "AA", "BA", "BB" };
+            var wordChains = new WordChains(dictionary);
+
+            var allMutations = wordChains.FindAllMutations("BA");
+
+            Assert.AreEqual(2, allMutations.Count);
+            Assert.AreEqual(allMutations[0], "AA");
+            Assert.AreEqual(allMutations[1], "BB");
+        }
+
+        [Test]
         public void IsValidMutation_ComparesTwoMutableWordOfSameLength_ReturnsTrue()
         {
             var word1 = "AA";

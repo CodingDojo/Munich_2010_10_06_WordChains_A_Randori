@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Dojo
 {
@@ -45,6 +47,12 @@ namespace Dojo
             }
             return mutationCount == 1;
 
+        }
+
+        public List<string> FindAllMutations(string word)
+        {
+            return dictionary.Where(c => this.IsValidMutation(word, c)).ToList();
+            
         }
     }
 }
