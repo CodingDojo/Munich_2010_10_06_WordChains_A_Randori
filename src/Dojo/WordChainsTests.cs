@@ -14,12 +14,13 @@ namespace Dojo
             var startWord = "A";
             var endWord = "B";
 
-            var dictionary = new List<string> { "B" };
+            var dictionary = new List<string> { "A", "B" };
             var wordChains = new WordChains(dictionary);
 
             List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
 
-            Assert.AreEqual( "B", mutation[0]);
+            Assert.AreEqual( "A", mutation[0]);
+            Assert.AreEqual( "B", mutation[1]);
         }
 
         [Test]
