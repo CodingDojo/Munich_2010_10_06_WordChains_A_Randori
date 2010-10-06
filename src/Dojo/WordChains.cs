@@ -37,26 +37,26 @@ namespace Dojo
             Assert.AreEqual(1, mutation.Count);            
         }
 
+        //[Test]
+        //public void GetWordMutations_DictionaryWithTwoMutation_ReturnsMutation()
+        //{
+        //    var startWord = "AA";
+        //    var endWord = "BB";
+
+        //    var dictionary = new List<string> { "AB", "BB" };
+        //    var wordChains = new WordChains(dictionary);
+
+        //    List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
+
+        //    Assert.AreEqual("AA", mutation[0]);              
+        //    Assert.AreEqual("AB", mutation[1]);              
+        //    Assert.AreEqual("BB", mutation[2]);              
+        //    Assert.AreEqual(3, mutation.Count);              
+        //}
+
+
         [Test]
-        public void GetWordMutations_DictionaryWithTwoMutation_ReturnsMutation()
-        {
-            var startWord = "AA";
-            var endWord = "BB";
-
-            var dictionary = new List<string> { "AB", "BB" };
-            var wordChains = new WordChains(dictionary);
-
-            List<string> mutation = wordChains.GetWordMutationPath(startWord, endWord);
-
-            Assert.AreEqual("AA", mutation[0]);              
-            Assert.AreEqual("AB", mutation[1]);              
-            Assert.AreEqual("BB", mutation[2]);              
-            Assert.AreEqual(3, mutation.Count);              
-        }
-
-
-        [Test]
-        public void IsValidMutation_ComparesTwoWords_ReturnsValidMutation()
+        public void IsValidMutation_ComparesTwoMutableWordOfSameLength_ReturnsTrue()
         {
             var word1 = "AA";
             var word2 = "AB";
@@ -70,7 +70,7 @@ namespace Dojo
         }
 
         [Test]
-        public void IsValidMutation_ComparesTwoWords_ReturnsInvalidMutation()
+        public void IsValidMutation_ComparesTwoImmutableWordsOfSameLength_ReturnsFalse()
         {
             var word1 = "AA";
             var word2 = "BB";
@@ -80,7 +80,19 @@ namespace Dojo
             bool isValidMutation = wordChains.IsValidMutation(word1, word2);
 
             Assert.IsFalse(isValidMutation);
+        }
+ 
+        [Test]
+        public void IsValidMutation_ComparesTwoWordsOfDifferentLength_ReturnsFalse()
+        {
+            var word1 = "A";
+            var word2 = "BB";
 
+            var wordChains = new WordChains(null);
+
+            bool isValidMutation = wordChains.IsValidMutation(word1, word2);
+
+            Assert.IsFalse(isValidMutation);
         }
     }
 
