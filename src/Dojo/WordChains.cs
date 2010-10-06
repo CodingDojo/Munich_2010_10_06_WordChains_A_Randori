@@ -24,7 +24,7 @@ namespace Dojo
             }
             else
             {
-                mutations.Add("AB");
+                mutations.Add(this.FindAllMutations(startWord).First());
                 mutations.Add(endWord);
                 return mutations;
             }
