@@ -13,11 +13,19 @@ namespace Dojo
 
         public List<string> GetWordMutationPath(string startWord, string endWord)
         {
-            if (startWord.Length == 1)
+            var mutations = new List<string>();
+            mutations.Add(startWord);
+            if (this.IsValidMutation(startWord, endWord))
             {
-                return new List<string>() { "B" };
+                mutations.Add(endWord);
+                return mutations;
             }
-            return new List<string>() { "AA", "AB" };
+            else
+            {
+                mutations.Add("AB");
+                mutations.Add(endWord);
+                return mutations;
+            }
         }
 
         internal bool IsValidMutation(string word1, string word2)
