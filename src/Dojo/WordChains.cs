@@ -34,7 +34,7 @@ namespace Dojo
             List<string> mutation = wordChains.GetWordMutations(startWord, endWord);
 
             Assert.AreEqual("AB", mutation[0]);            
-            Assert.AreEqual(0, mutation.Count);            
+            Assert.AreEqual(1, mutation.Count);            
         }
 
         [Test]
